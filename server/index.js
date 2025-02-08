@@ -13,11 +13,11 @@ const PORT = process.env.PORT || 8080 // Retrieves the server port from the .env
 // If not defined, return 8080 (default)
 
 app.get('/', (req, res) => {
-    response.json ({
-        message: "Server running at" + PORT
+    res.json ({
+        message: "Server running at " + PORT
     })
 })  
 
 app.listen(PORT, () => {
-    console.log("Server is running on port" + PORT)
+    console.log("Server running at " + PORT)
 })
