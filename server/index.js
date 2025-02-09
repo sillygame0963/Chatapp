@@ -1,6 +1,7 @@
 const express = require('express') // Imports the Express.js framework to create a web server.
 const cors = require('cors') // Imports the CORS middleware to handle cross-origin requests.
 require('dotenv').config() //  Loads environment variables from a .env file.
+const DBconnect = require('./config/DBconnect')
 
 // Initializes an Express application (app).
 const app = express()
@@ -18,6 +19,9 @@ app.get('/', (req, res) => {
     })
 })  
 
-app.listen(PORT, () => {
-    console.log("Server running at " + PORT)
+DBconnect().then(() => {
+    app.listen(PORT, () => {
+        console.log("Server running at " + PORT)
+    })
 })
+
